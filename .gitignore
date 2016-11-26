@@ -1,0 +1,11 @@
+../nbproject/private/
+../build/
+../nbbuild/
+../dist/
+../nbdist/
+../.nb-gradle/
+ChatClient/target/
+ChatProtocol/target/
+ChatServer/target/test-classes/com/godziatkowski/ChatApplicationTests.class
+ChatServer/target/
+../nbactions.xml
