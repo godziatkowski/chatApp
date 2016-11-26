@@ -10,7 +10,7 @@ import org.springframework.remoting.caucho.BurlapServiceExporter;
 public class BurlapConfigurer {
     
     @Autowired
-    private BurlapService burlapService;
+    private IChatService burlapService;
     
     @Bean(name="/burlapService")
     public BurlapServiceExporter burlapService(){

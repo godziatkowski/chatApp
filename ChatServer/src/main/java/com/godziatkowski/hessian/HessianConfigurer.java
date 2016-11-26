@@ -11,7 +11,7 @@ import org.springframework.remoting.caucho.HessianServiceExporter;
 public class HessianConfigurer {
 
     @Autowired
-    private HessianService hessianService;
+    private IChatService hessianService;
     
     @Bean(name = "/hessianService")
     public HessianServiceExporter hessianService() {
