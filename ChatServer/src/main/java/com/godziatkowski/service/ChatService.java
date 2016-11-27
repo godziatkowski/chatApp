@@ -56,4 +56,9 @@ public class ChatService implements IChatService {
         return userService.readMessagesForUser(userId);
     }
 
+    @Override
+    public void createChannel(String channelName, long userId) {
+        channelService.createNewChannel(channelName, userId);
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.godziatkowski.model;
 
+import com.godziatkowski.chatprotocol.ChannelData;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
@@ -46,6 +47,10 @@ public class Channel {
 
     public boolean isEmpty() {
         return usersOnChannel.isEmpty();
+    }
+
+    public ChannelData toChannelData() {
+        return new ChannelData(id, name);
     }
 
 }

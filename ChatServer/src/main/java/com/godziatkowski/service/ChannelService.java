@@ -55,7 +55,7 @@ public class ChannelService implements IChannelService {
     public List<ChannelData> getChannels() {
         return channels.values()
                 .stream()
-                .map(channel -> new ChannelData(channel.getId(), channel.getName()))
+                .map(Channel::toChannelData)
                 .collect(Collectors.toList());
     }
 
