@@ -5,6 +5,9 @@ import com.godziatkowski.chatclient.panels.AppPanel;
 import com.godziatkowski.chatclient.panels.LoginPanel;
 import java.awt.CardLayout;
 import java.awt.GridLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +45,16 @@ public class MainWindow extends JFrame implements ApplicationListener<LoginEvent
         mainPanel.add(appPanel, APP_PANEL);
         cardLayout.show(mainPanel, LOGIN_PANEL);
 
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        WindowListener exitListener = new WindowAdapter() {
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                appPanel.logout();
+                System.exit(0);
+            }
+        };
+        addWindowListener(exitListener);
     }
 
     @Override
