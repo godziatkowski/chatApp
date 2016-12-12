@@ -5,12 +5,22 @@ import com.godziatkowski.chatprotocol.IChatService;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.remoting.caucho.BurlapProxyFactoryBean;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BurlapClient {
 
+    private static final String BURLAP_SERVICE = "/burlapService";
+
+    @Autowired
+    @Value("${server.url}")
+    private String url;
+
     public IChatService getService() {
-        String serviceUrl = "http://localhost:8080/burlapService";
+        String serviceUrl = url + BURLAP_SERVICE;
 
         BurlapProxyFactory burlapProxyFactory = new BurlapProxyFactory() {
             @Override

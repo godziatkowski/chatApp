@@ -7,12 +7,22 @@ import com.caucho.hessian.client.HessianURLConnectionFactory;
 import com.godziatkowski.chatprotocol.IChatService;
 import java.io.IOException;
 import java.net.URL;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.remoting.caucho.HessianProxyFactoryBean;
+import org.springframework.stereotype.Component;
 
+@Component
 public class HessianClient {
 
+    private static final String HESSIAN_SERVICE = "/hessianService";
+
+    @Autowired
+    @Value("${server.url}")
+    private String url;
+
     public IChatService getService() {
-        String serviceUrl = "http://localhost:8080/hessianService";
+        String serviceUrl = url + HESSIAN_SERVICE;
 
         HessianProxyFactory hpf = new HessianProxyFactory();
         HessianConnectionFactory hcf = new HessianURLConnectionFactory() {
